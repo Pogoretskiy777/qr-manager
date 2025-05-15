@@ -1,0 +1,11 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+#qr-item {
+  cursor: pointer;
+}
+
+#tag-item {
+  cursor: pointer;
+}

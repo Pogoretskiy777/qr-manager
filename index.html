@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>QR Manager</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-10 backdrop-blur-sm">
+      <nav class="flex sticky top-0 z-10 bg-white/95 justify-between items-end shadow-lg w-full p-4">
+        <h1><a class="text-3xl hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="index.html">QR Manager</a></h1>
+        <ul>
+          <li>
+            <a class="text-xl text-black hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="pages/about.html">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="flex flex-col max-w-5xl m-auto">
+      <div class="flex flex-wrap justify-between gap-4 mx-4 mt-4">
+        <div class="flex grow min-w-8 shadow-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150 ring-1 ring-black/5 gap-2 items-center justify-between rounded-xl p-2">
+          <label for="filter">Filter By</label>
+          <select class="py-2 px-[4px] rounded-lg text-black/60" id="filter" name="filter">
+            <option value="none">None</option>
+          </select>
+        </div>
+        <div class="flex grow shadow-lg ring-1 ring-black/5 gap-2 items-center justify-between rounded-xl p-2 hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <label for="sort">Sort By</label>
+          <select class="py-2 px-[4px] rounded-lg text-black/60" id="sort" name="sort">
+            <option value="latest" selected>Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="alphabetical">Alphabetical</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rows change to a dynamic grid of items as viewport increases -->
+    <!-- Each QR item changes from col to row as viewport increases -->
+    <div class="md:w-5xl md:flex md:flex-col md:m-auto md:justify-center md:max-w-5xl">
+      <div class="flex flex-col md:flex-row md:flex-wrap md:mt-4 md:gap-4 md:mx-4 md:justify-center" id="qr-container">
+        <a href="pages/edit.html#new" class="flex flex-col gap-2 items-center shadow-lg ring-1 ring-black/5 rounded-xl mx-4 md:mx-0 mt-4 md:mt-0 py-6 md:w-[185px] md:flex-none md:h-80 md:justify-center hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <p class="text-xl text-black/60">New</p>
+          <img class="w-12 opacity-60" src="images/plus-sign.png" alt="New QR">
+        </a>
+      </div>
+      <footer class="flex max-w-5xl w-5xl align-center justify-center gap-4 my-8 mx-4">
+        <button class="w-24 h-8 ring-1 ring-black/5 justify-center items-center rounded-md text-md shadow-lg hover:ring-black/10 hover:bg-black/5 focus:ring-black/10 active:bg-black/15 transition ease-in-out duration-150" type="button" name="import" id="import">Import</button>
+        <button class="w-24 h-8 ring-1 ring-black/5 justify-center items-center rounded-md text-md shadow-lg hover:ring-black/10 hover:bg-black/5 focus:ring-black/10 active:bg-black/15 transition ease-in-out duration-150" type="button" name="export" id="export">Export</button>
+        <button class="w-24 h-8 ring-1 ring-black/5 justify-center items-center rounded-md text-md shadow-lg hover:ring-black/10 hover:bg-black/5 focus:ring-black/10 active:bg-black/15 transition ease-in-out duration-150" type="button" name="clear" id="clear">Clear</button>
+        <a class="flex align-center w-24 h-8 ring-1 ring-black/5 justify-center items-center rounded-md text-md shadow-lg hover:ring-black/10 hover:bg-black/5 focus:ring-black/10 active:bg-black/15 transition ease-in-out duration-150" href="report.html">Report</a>
+      </footer>
+    </div>
+    <template id="qr-template">
+      <a class="qr-item flex flex-row md:flex-col md:w-[185px] md:flex-none md:h-80 items-center shadow-lg ring-1 ring-black/5 rounded-xl mx-4 md:mx-0 mt-4 md:mt-0 p-2 gap-2 hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+        <div class="w-32 md:w-40 flex-none">
+          <img class="qr-image p-1" src="images/QR_Code_example.png" alt="QR Code Example">
+        </div>
+        <div class="flex flex-col md:w-40">
+          <p class="qr-title text-lg/5 truncate ...">QR-Title</p>
+          <p class="qr-date text-md leading-[1.2] line-clamp-1 text-black/60">QR-Date</p>
+          <ol class="qr-tags flex flex-wrap items-center gap-x-2 gap-y-1 mb-1 text-sm text-white h-auto">
+            <li class="bg-[#450084] px-1 rounded-md" id="qr-tag">#QR-Tag</li>
+          </ol>
+          <p class="qr-description text-sm/4 line-clamp-2 md:line-clamp-3">Description</p>
+        </div>
+      </a>
+    </template>
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+
+
+</html>

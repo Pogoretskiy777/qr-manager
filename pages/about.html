@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <title>QR Manager</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-10 backdrop-blur-sm">
+      <nav class="flex sticky top-0 z-10 bg-white/95 justify-between items-end shadow-lg w-full p-4">
+        <h1><a class="text-3xl hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="../index.html">QR Manager</a></h1>
+        <ul>
+          <li>
+            <a class="text-xl text-black hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="about.html">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex justify-center">
+      <div class="flex flex-col m-4 max-w-5xl gap-4">
+        <section class="flex flex-col grow shadow-lg ring-1 ring-black/5 p-4 rounded-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-1">Purpose</h2>
+          <p class="text-md leading-[1.3] mb-6">QR codes have been one of the most recognizable barcodes in the world since 1994. People typically see them everywhere in society for a variety of purposes, whether that be to see a restaurant’s menu or to join a club at a local university all from a single scan from one’s smartphone. Anyone can create a QR code and internet access has made it easier than ever. However, there has been a considerable lack of applications that allow users to save previously generated QR codes and organize them, whether that be for personal use or a company.</p>
+          <p class="text-md leading-[1.3] mb-6">This website’s purpose is to enable users to generate and save these QR codes in an organized way for continuous maintenance. The problem this application aims to solve is QR code mismanagement and the lack of applications that allow users to organize and maintain their QR codes. This site also aims to simplify the updating of QR codes, as users can update their QR codes all in one place.</p>
+          <p class="text-md leading-[1.3]">Additionally, the platform will offer features such as categorization, tagging, and search functionality, making it easier for users to locate specific QR codes quickly. Users will also have the ability to export or share their QR codes directly from the site.</p>
+        </section>
+        <section class="flex flex-col grow shadow-lg ring-1 ring-black/5 p-4 rounded-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-1">Users</h2>
+          <p class="text-md leading-[1.3] mb-6">Any industry that uses QR codes in their organization can use this application. Below are listed a few general examples of users that can use this application:</p>
+          <h3 class="text-[20px] font-bold">Restaurant Owners</h3>
+          <p class="text-md leading-[1.3] mb-6">People who manage restaurants can use this application to generate QR codes for their menus. Oftentimes, QR codes are printed and put on dining tables for the guests to scan and either view the menu or pray for their order. This application makes it convenient to not only generate QR codes but also organize and keep track of different versions of the restaurant menus, whether that be based on their date of creation or the user-customized tags added alongside the QR code.</p>
+          <h3 class="text-[20px] font-bold">Student Organizations/Clubs</h3>
+          <p class="text-md leading-[1.3] mb-6">Students who manage university clubs often resort to generating QR codes for event signups or joining the club’s group chats. This application makes it convenient for students to generate QR codes and organize them in one convenient place to not lose track of which QR codes are used. It is also convenient to download the QR code from the get-go in their desired format.</p>
+          <p class="text-md leading-[1.3]">This application will save time in organizing QR codes and knowing about the external links of the QR codes without having to scan them. Organizational tools for already created QR codes such as tags will allow users to keep track of their already created QR codes and make updating them much more convenient and user-friendly.</p>
+        </section>
+        <section class="flex flex-col grow shadow-lg ring-1 ring-black/5 p-4 rounded-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-1">Features</h2>
+          <p class="text-md leading-[1.3] mb-4">The primary feature is generating custom QR codes given the style of the preferred code and the link it leads to. The following features are fields that the user can either read or read/write for each QR code generated:</p>
+          <ul class="list-disc mx-8 mb-4 text-md leading-[1.2]">
+            <li>Title</li>
+            <li>QR Code format/algorithm</li>
+            <li>Date of Creation</li>
+            <li>External URL Link</li>
+            <li>Tags (#)</li>
+            <li>Description</li>
+          </ul>
+          <p class="text-md leading-[1.3] mb-4">Each QR code can also be downloaded within the browser as a .png file. The user can also perform CRUD operations:</p>
+          <ul class="list-disc mx-8 mb-4 text-md leading-[1.2]">
+            <li>Create - Generate a QR code</li>
+            <li>Read - Read the generated QR code</li>
+            <li>Update - Update the QR code’s read/write data</li>
+            <li>Delete - Delete a generated QR code</li>
+          </ul>
+          <p class="text-md leading-[1.3] mb-6">The user can sort their QR codes by title, date of creation, and date last modified in either ascending or descending order. The user can also filter their QR codes by tags.</p>
+          <p class="text-md leading-[1.3]">There will be a separate section of the site for each function. For example, there will be a dedicated screen for the organization, tagging, and updating of QR codes. The creation of a QR code can be accessed by clicking a button in the navbar, or the “Create new” button in the organizer.</p>
+        </section>
+        <section class="flex flex-col grow shadow-lg ring-1 ring-black/5 p-4 rounded-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-1">Data</h2>
+          <p class="text-md leading-[1.3] mb-6">Users will be able to create, read, update, and delete QR code objects that will contain a name, format, date of creation, date last modified, external URL link, tags, and description. These QR codes can also be organized, sorted, and filtered by the user. The sort type and currently selected filter will also be created for each user, and can be read each time the site is visited, updated when changing these options, and can be reset to default by the user.</p>
+          <p class="text-md leading-[1.3]">An example outline of the data used is as follows: a user generates a QR code, and an object for it containing the QR code data is generated. The QR code is assigned a Date of creation and last modified, an initial title of “Untitled QR Code”, and the format is generated based on what type of data the code is storing. The user can then specify the rest of the information. This means that the user can also create a new tag to assign to the QR code. Additionally, the user’s list of QR codes is updated. If a new tag is created, it will appear as an option for sorting and filtering.</p>
+        </section>
+        <section class="flex flex-col grow shadow-lg ring-1 ring-black/5 p-4 rounded-lg hover:shadow-xl hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-1">API</h2>
+          <p class="text-md leading-[1.3] mb-6">QR Manager uses the <a href="https://goqr.me/api/doc/create-qr-code/" class="font-bold underline">goQR.me</a> API to generate QR codes and fetching them to display for the user. There is no limit on the amount of QR codes a user can generate a day; however, the API's owners "reserve the right to reject API requests." This includes requests that are considered abusive or inappriopriate (i.e. a <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack" class="font-bold underline">DoS attack</a>) per discretion of the owners.</p>
+          <p class="text-md leading-[1.3]">The owners of goQR.me do not store or log QR code contents, but they only know that a request to generate an API happened and have access to the origins of the request (referrer and IP address). The QR code image / symbol is deleted ~30 seconds after delivery from the cache and is not permanently stored. To learn more, visit the API's <a href="https://goqr.me/privacy-safety-security/" class="font-bold underline">privacy policy page.</a></p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

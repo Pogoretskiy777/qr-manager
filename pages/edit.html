@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <title>QR Manager</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-10 backdrop-blur-sm">
+      <nav class="flex sticky top-0 z-10 bg-white/95 justify-between items-end shadow-lg w-full p-4">
+        <h1><a class="text-3xl hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="../index.html">QR Manager</a></h1>
+        <ul>
+          <li>
+            <a class="text-xl text-black hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="about.html">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="flex items-center justify-center">
+      <div class="flex flex-col grow max-w-5xl">
+        <!-- Items in editor change from column to row as viewport increases -->
+        <main class="flex flex-col md:flex-row md:gap-8 m-4 shadow-xl ring-1 ring-black/5 p-4 rounded-lg items-center">
+            <div class="flex flex-col w-full items-center">
+              <img class="border-2 border-black/5 rounded-lg shadow-sm max-w-sm w-full p-4" src="../images/QR_Code_example.png" alt="QR Code Example" id="qrPreview">
+            </div>
+          <form class="flex flex-col w-full mt-2 gap-2">
+            <div class="flex flex-col gap-1">
+              <label class="text-lg" for="url-link">URL:</label>
+              <input class="text-md ring-1 ring-black/5 rounded-md p-2 shadow-sm hover:shadow-md hover:ring-black/10 focus:shadow-md focus:ring-black/10 transition ease-in-out duration-150" type="text" id="url-link" name="url-link" placeholder="URL Link" required>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-lg" for="title-text">Title:</label>
+              <input class="text-md ring-1 ring-black/5 rounded-md p-2 shadow-sm hover:shadow-md hover:ring-black/10 focus:shadow-md focus:ring-black/10 transition ease-in-out duration-150" type="text" id="title-text" name="title-text" placeholder="Title" required>
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="flex gap-2">
+                <label class="text-lg" for="tags">Tags:</label>
+                <ol class="flex text-white gap-2 items-center flex-wrap" id="tag-list">
+                </ol>
+              </div>
+              <!-- Insert new tags here after they are added -->
+              <input class="text-md ring-1 ring-black/5 rounded-md p-2 shadow-sm hover:shadow-md hover:ring-black/10 focus:shadow-md focus:ring-black/10 transition ease-in-out duration-150" type="text" id="tags" name="tags" placeholder="Tag name">
+              <div class="flex justify-between gap-4 mt-2">
+                <select class="flex grow p-2 rounded-md shadow-sm text-md ring-1 ring-black/15 hover:shadow-md hover:ring-black/25 hover:bg-black/15 focus:shadow-md focus:ring-black/25 focus:bg-black/15 active:bg-black/35 transition ease-in-out duration-150" id="tag-color" name="tag-color">
+                  <option value="choose-color" data-hex="" selected>-- Color --</option>
+                  <option value="jmu-purple" class="text-blue" data-hex="#450084">JMU Purple</option>
+                  <option value="jmu-gold" data-hex="#826201">JMU Gold</option>
+                  <option value="jmu-teal" data-hex="#00797a">JMU Teal</option>
+                  <option value="blue" data-hex="#0000CC">Blue</option>
+                  <option value="green" data-hex="#008000">Green</option>
+                  <option value="orange" data-hex="#b55b00">Orange</option>
+                  <option value="red" data-hex="#cc0000">Red</option>
+                </select>
+                <button class="w-24 ring-1 ring-black/20 bg-black/15 justify-center items-center rounded-md text-md shadow-sm hover:shadow-md hover:ring-black/30 hover:bg-black/25  focus:shadow-md focus:ring-black/30 focus:bg-black/25 active:bg-black/35 transition ease-in-out duration-150" type="button" id="add-tag">Add Tag</button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-lg" for="description">Description:</label>
+              <textarea class="text-md ring-1 ring-black/5 rounded-md p-2 shadow-sm hover:shadow-md hover:ring-black/10 focus:shadow-xl focus:ring-black/10 transition ease-in-out duration-150" id="description" name="description" placeholder="Description"></textarea>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-lg" for="creation-date">Date:</label>
+              <input class="text-md ring-1 ring-black/5 rounded-md p-2 shadow-sm text-black/55" type="text" id="creation-date" name="creation-date" value="Insert Current Date via JS" readonly>
+            </div>
+            <hr class="mt-2">
+            <div class="flex flex-col mt-2">
+              <button class="w-full ring-1 ring-indigo-500 bg-indigo-400 justify-center items-center rounded-md text-md py-1 text-lg hover:shadow-md hover:shadow-indigo-500/50 hover:ring-indigo-600 hover:bg-indigo-500 focus:shadow-md focus:bg-indigo-600 focus:ring-indigo-600 active:bg-indigo-600 transition ease-in-out duration-150" type="submit" name="save" id="save">Save</button>
+            </div>
+            <div class="flex flex-col mt-2">
+              <a href="index.html" download="default" class="w-full text-center ring-1 ring-green-500 bg-green-400 justify-center items-center rounded-md text-md py-1 text-lg hover:shadow-md hover:shadow-green-500/50 hover:ring-green-600 hover:bg-green-500 focus:shadow-md focus:bg-green-600 focus:ring-green-600 active:bg-green-600 transition ease-in-out duration-150" id="download">Download</a>
+            </div>
+            <!-- The delete button should only appear when editing existing QRs -->
+            <div class="flex flex-col mt-2">
+              <button class="w-full ring-1 ring-red-500 bg-red-400 justify-center items-center rounded-md text-md py-1 text-lg hover:shadow-md hover:shadow-red-500/50 hover:ring-red-600 hover:bg-red-500 focus:shadow-md focus:bg-red-600 focus:ring-red-600 active:bg-red-600 transition ease-in-out duration-150" type="button" name="delete" id="delete">Delete</button>
+            </div>
+            <div class="flex flex-col mt-2">
+                <a class="w-full ring-1 ring-black/20 bg-black/15 justify-center items-center rounded-md text-md py-1 text-center text-lg hover:shadow-md hover:ring-black/30 hover:bg-black/25  focus:shadow-md focus:ring-black/30 focus:bg-black/25 active:bg-black/35 transition ease-in-out duration-150" href="../index.html">Back</a>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="../scripts/edit.js"></script>
+  </body>
+</html>
