@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>Report</title>
+</head>
+<body>
+  <main>
+    <h1>Report</h1>
+      <ol>
+        <li>This is the url to our GitHub repository: <a href="https://github.com/343S25/343-final-cheng-pogoretskiy">Repository</a></li>
+        <li>This is the url to our URL to our deployed site: <a href="https://343s25.github.io/343-final-cheng-pogoretskiy/">Github Pages</a></li>
+        <li>Check comments in index.html and edit.html</li>
+        <li>Our page currently has 3 meaningful pages (requirements might change)</li>
+        <li>Each web page has a &lt;header&gt; element</li>
+        <li>Each page has a navigation link to the about page and homepage in the</li>
+        <li>Each image has a meaningful 'alt' attribute</li>
+        <li>Our webpage currently is validated with Nu HTML Checker and WAVE Accessibility</li>
+        <li>Our site currently has 1/2 font faces</li>
+        <li>Our editor includes a form</li>
+        <li>Our site includes a link to an external website about the API used</li>
+        <li>Our site does not make any network requests yet, but a sample request is shown on this report. We didn't have time to implement the network request in the site because of the limited time between learning the material in class and the deadline.</li>
+        <li><a href="https://goqr.me/api/doc/create-qr-code/">QR API</a></li>
+      </ol>
+  </main>
+
+  <div id="api-demo">
+    <ul>
+      <li>API Demo</li>
+      <li>Fetch URL: <a href="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=200x200">https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=200x200</a></li>
+      <li id="demo"></li>
+    </ul>
+  </div>
+  <script type="module" src="../scripts/common.js"></script>
+<script type="module">
+  import { queryAPISample } from "../scripts/common.js";
+  queryAPISample();
+</script>
+</body>
+
+
+
+</html>
