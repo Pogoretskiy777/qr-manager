@@ -156,14 +156,9 @@ The application is fully responsive and works seamlessly on:
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## Author
-
-**Joseph Pogoretskiy**  
-GitHub: [@Pogoretskiy777](https://github.com/Pogoretskiy777)
-
 ## Support
 
-For questions, issues, or feedback, please open a GitHub issue or contact the author.
+For questions, issues, or feedback, please open a GitHub issue or contact me.
 
 ## Acknowledgments
 
