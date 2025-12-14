@@ -286,12 +286,17 @@ function initialize(qrArray)
 }
 
 // Running --------------------------------------------------------------------------------------------------------------------
-let qrArrayMain = loadQrArray();
+let qrArrayMain = [];
 
-addQREventListeners(qrArrayMain);
-addSortingFilterEventListeners();
+// Initialize async to load QR array from Firestore
+async function initializeAsync() {
+	qrArrayMain = await loadQrArray();
+	
+	addQREventListeners(qrArrayMain);
+	addSortingFilterEventListeners();
+	addImportExportEventListeners();
+	addClearEventListeners();
+	initialize(qrArrayMain);
+}
 
-addImportExportEventListeners();
-addClearEventListeners();
-
-initialize(qrArrayMain);
+initializeAsync();

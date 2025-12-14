@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <title>QR Manager - Account</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-10 backdrop-blur-sm">
+      <nav class="flex sticky top-0 z-10 bg-white/95 justify-between items-end shadow-lg w-full p-4">
+        <h1><a class="text-3xl hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="../index.html">QR Manager</a></h1>
+        <ul class="flex gap-4">
+          <li>
+            <a class="text-xl text-black hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="about.html">About</a>
+          </li>
+          <li>
+            <a class="text-xl text-black hover:text-black/70 focus:text-black/70 active:text-black/50 transition ease-in-out duration-150" href="account.html">Account</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex justify-center">
+      <div class="flex flex-col m-4 max-w-md w-full gap-4">
+        <!-- Login Form for Guests -->
+        <div id="login-container" class="flex flex-col shadow-lg ring-1 ring-black/5 p-6 rounded-lg hover:shadow-xl hover:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-4">Login</h2>
+          <form id="login-form" class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="email" class="text-md font-medium">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="px-3 py-2 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+                placeholder="Enter your email"
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="password" class="text-md font-medium">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required 
+                class="px-3 py-2 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+                placeholder="Enter your password"
+              >
+            </div>
+            <div id="error-message" class="text-red-600 text-sm hidden"></div>
+            <button 
+              type="submit" 
+              class="w-full py-2 bg-black text-white rounded-lg hover:bg-black/80 focus:ring-2 focus:ring-black/30 active:bg-black/70 transition ease-in-out duration-150"
+            >
+              Login
+            </button>
+          </form>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-black/60">Don't have an account? <button id="show-signup" class="text-black hover:underline">Sign up</button></p>
+          </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-container" class="hidden flex flex-col shadow-lg ring-1 ring-black/5 p-6 rounded-lg hover:shadow-xl hover:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
+          <form id="signup-form" class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="signup-email" class="text-md font-medium">Email</label>
+              <input 
+                type="email" 
+                id="signup-email" 
+                name="signup-email" 
+                required 
+                class="px-3 py-2 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+                placeholder="Enter your email"
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="signup-password" class="text-md font-medium">Password</label>
+              <input 
+                type="password" 
+                id="signup-password" 
+                name="signup-password" 
+                required 
+                minlength="6"
+                class="px-3 py-2 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+                placeholder="Create a password (min 6 characters)"
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="confirm-password" class="text-md font-medium">Confirm Password</label>
+              <input 
+                type="password" 
+                id="confirm-password" 
+                name="confirm-password" 
+                required 
+                minlength="6"
+                class="px-3 py-2 border border-black/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/30 transition"
+                placeholder="Confirm your password"
+              >
+            </div>
+            <div id="signup-error-message" class="text-red-600 text-sm hidden"></div>
+            <button 
+              type="submit" 
+              class="w-full py-2 bg-black text-white rounded-lg hover:bg-black/80 focus:ring-2 focus:ring-black/30 active:bg-black/70 transition ease-in-out duration-150"
+            >
+              Sign Up
+            </button>
+          </form>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-black/60">Already have an account? <button id="show-login" class="text-black hover:underline">Login</button></p>
+          </div>
+        </div>
+
+        <!-- Welcome Screen for Logged-in Users -->
+        <div id="welcome-container" class="hidden flex flex-col shadow-lg ring-1 ring-black/5 p-6 rounded-lg hover:shadow-xl hover:ring-black/10 transition ease-in-out duration-150">
+          <h2 class="text-2xl font-bold mb-4">Welcome!</h2>
+          <p class="text-lg mb-4">You are logged in as <span id="user-email" class="font-semibold"></span></p>
+          <div class="flex flex-col gap-4">
+            <div class="p-4 bg-black/5 rounded-lg">
+              <p class="text-md text-black/70">Your QR codes are now being saved to your account. Guest QR codes remain in local storage only.</p>
+            </div>
+            <button 
+              id="logout-button" 
+              class="w-full py-2 bg-black text-white rounded-lg hover:bg-black/80 focus:ring-2 focus:ring-black/30 active:bg-black/70 transition ease-in-out duration-150"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script type="module" src="../scripts/account.js"></script>
+  </body>
+</html>

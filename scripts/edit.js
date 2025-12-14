@@ -13,7 +13,7 @@ let needsRegeneration = false;
 let tagCount = 0;
 const maxTags = 5;
 
-let qrArray = loadQrArray();
+let qrArray = [];
 
 // these arrays store the tags and colors that are read from storage
 let tagsArray = [];
@@ -155,9 +155,14 @@ function initialize()
 	}
 }
 
-// Running --------------------------------------------------------------------------------------------------------------------
-initialize();
-console.log(qrData || "new QR code");
+// Running - Initialize async to load QR array from Firestore
+async function initializeAsync() {
+	qrArray = await loadQrArray();
+	initialize();
+	console.log(qrData || "new QR code");
+}
+
+initializeAsync();
 
 // Event Listeners ------------------------------------------------------------------------------------------------------------
 
@@ -314,9 +319,12 @@ saveButton.addEventListener("click", (event) =>
 
 					// save the qr code to local storage
 					qrArray.push(newQR);
-					saveQrArray(qrArray);
-
-					window.location.href = "../index.html";
+					saveQrArray(qrArray).then(() => {
+						window.location.href = "../index.html";
+					}).catch((error) => {
+						console.error("Error saving QR code:", error);
+						alert("Error saving QR code. Please try again.");
+					});
 				});
 			})
 			.catch((error) => {
@@ -372,9 +380,12 @@ saveButton.addEventListener("click", (event) =>
 					// console.log(newQR);
 
 					// save the qr code to local storage
-					saveQrArray(qrArray);
-
+				saveQrArray(qrArray).then(() => {
 					window.location.href = "../index.html";
+				}).catch((error) => {
+					console.error("Error saving QR code:", error);
+					alert("Error saving QR code. Please try again.");
+				});
 				});
 			})
 			.catch((error) => {
@@ -384,8 +395,12 @@ saveButton.addEventListener("click", (event) =>
 		}
 		else // if regeneration not needed (changes don't include a new URL)
 		{
-			saveQrArray(qrArray);
-			window.location.href = "../index.html";
+			saveQrArray(qrArray).then(() => {
+				window.location.href = "../index.html";
+			}).catch((error) => {
+				console.error("Error saving QR code:", error);
+				alert("Error saving QR code. Please try again.");
+			});
 		}
 	}
 });
@@ -396,9 +411,12 @@ if (edit)
 	{
 		let qrID = window.location.hash.substring(1);
 		qrArray = qrArray.filter((qr) => qr.qrID !== qrID); // delete the qr code from the array with matching id
-		saveQrArray(qrArray);
-
-		window.location.href = "../index.html";
+		saveQrArray(qrArray).then(() => {
+			window.location.href = "../index.html";
+		}).catch((error) => {
+			console.error("Error deleting QR code:", error);
+			alert("Error deleting QR code. Please try again.");
+		});
 	});
 
   downloadButton.addEventListener("click", () => {
